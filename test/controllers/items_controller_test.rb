@@ -7,3 +7,4 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
 end
+
