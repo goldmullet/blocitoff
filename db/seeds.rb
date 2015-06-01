@@ -7,4 +7,16 @@ require 'faker'
    password: 'helloworld',
  )
  admin.skip_confirmation!
- admin.save! 
+admin.save!
+
+ 10.times do 
+  item=Item.create!(
+    user: admin,
+    name: Faker::Lorem.sentence
+)
+   
+ end
+ items=Item.all
+
+ puts "Admin created"
+ puts "#{Item.count} items created"

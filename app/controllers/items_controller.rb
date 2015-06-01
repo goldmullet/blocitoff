@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   def create
      @user=current_user
-    @item = current_user.items.build(item_params)
-    @new_item=Item.new
+     @item = current_user.items.build(item_params)
+     @new_item=Item.new
 
     if @item.save
        flash[:notice] = "Item was saved."
@@ -22,6 +22,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name)
   end
-  end
 end
+
 
