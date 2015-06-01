@@ -1,11 +1,19 @@
- <%= content_tag :div, class: 'media', id: "item-#{item.id}" do %>
-  <div class='media-body>'
-         <ul class="list-group">
-           <li class="list-group-item">
-             <%= link_to "",[@list,item], method: :delete, remote: true,  class: 'glyphicon glyphicon-unchecked',id: "checkbox-#{item.id}" %>
-              <body id: "strike-<%=item.id%>" ><%=item.name%></body>
-               <span class="badge"><%=pluralize(item.days_left, 'day')%> left</span>
-        </li>
-    </ul>
-  </div>
-<%end%>
+<%= form_for [@list,@list.items.build], remote: true do |f| %>
+   <% if item.errors.any? %>
+     <div class="alert alert-danger">
+       <h4>There are <%= pluralize(item.errors.count, "error") %>.</h4>
+       <ul>
+         <% item.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <%= form_group_tag(item.errors[:name]) do %>
+     <%= f.label "New To-do" %>
+     <%= f.text_field :name, class: 'form-control', placeholder: "Enter to-do" %>
+   <% end %>
+   <div class="form-group">
+     <%= f.submit "Add", class: 'btn btn-success' %>
+   </div>
+ <% end %>
