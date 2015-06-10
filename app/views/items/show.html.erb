@@ -16,7 +16,8 @@
 <h2>Todo Lists</h2>
 <% @lists.each do |list| %>
   <%= list.name %>
-  <%= list.items.inspect %>
+  <%= link_to "destroy", list, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this to-do?'} %>
+  </br>
   <br>
 <% end %>
 <h4 class='js-comments-count'><%# @items.count %> Total</h4> 

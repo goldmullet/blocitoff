@@ -1,0 +1,31 @@
+</br>
+<div class="row">
+   <div class="col-md-8">
+     <div class="media">
+       <div class="media-body">
+         <h2 class="media-heading">Hello <%= @user.name %>!</h2>
+       </div>
+     </div>
+   </div>
+ </div> 
+ </div>
+
+<br/>
+
+<div class="col-md-10">
+<h2>Todo Lists</h2>
+<% @items.each do |item| %>
+  <%= item.name %>
+  <%= link_to "destroy", item, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this to-do?'} %>
+  </br>
+  <br>
+<% end %>
+<h4 class='js-comments-count'><%# @items.count %> Total</h4> 
+  <div class='js-items'>
+    <%# render partial: 'items/item', collection: @items %>
+   </div>
+
+
+  <div class='new-item'>
+   <%# render partial: 'items/form', locals: { user:@user, item: @item} %>
+  </div>

@@ -1,4 +1,16 @@
 class ItemsController < ApplicationController
+
+  def index
+    @user = current_user
+    @items = Item.all
+  end
+
+  def show
+    @user = current_user
+    @lists = @user.lists
+    @item=Item.new
+  end
+
   def create
      @user=current_user
      @item = current_user.items.build(item_params)
@@ -13,6 +25,17 @@ class ItemsController < ApplicationController
      respond_to do |format|
       format.html
       format.js
+    end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.destroy
+      flash[:notice] = "To-do was destroyed"
+      redirect_to items_path
+    else
+      flash[:notice] = "There was a problem destroying the to-do"
+      redirect_to items_path
     end
   end
 
