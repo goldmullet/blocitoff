@@ -2,13 +2,17 @@ class ItemsController < ApplicationController
 
   def index
     @user = current_user
-    @items = Item.all
+    @items = current_user.items
   end
 
   def show
     @user = current_user
     @lists = @user.lists
     @item=Item.new
+  end
+
+  def new
+    @item = current_user.items.build
   end
 
   def create

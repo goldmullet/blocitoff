@@ -9,18 +9,12 @@ require 'faker'
  admin.skip_confirmation!
 admin.save!
 
+
   10.times do 
-    list = List.create!(
-      name: Faker::Lorem.sentence,
-      description: Faker::Lorem.sentence,
-      user: admin
+    item=Item.create!(
+      user: admin,
+      name: Faker::Lorem.sentence
     )
-    10.times do 
-      item=Item.create!(
-        list: list,
-        name: Faker::Lorem.sentence
-      )
-    end
   end
 
  puts "Admin created"
