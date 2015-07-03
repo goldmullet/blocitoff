@@ -6,10 +6,6 @@ class ItemsController < ApplicationController
     @item = current_user.items.build
   end
 
-  def crap
-    @name = 'Chip Neff'
-  end
-
   def show
     @user = current_user
     @lists = @user.lists

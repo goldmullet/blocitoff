@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'items/create'
 
   devise_for :users
-  get 'items/crap'
+  
   resources :users, only: [:show]
   resources :items
 
