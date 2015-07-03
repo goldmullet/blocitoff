@@ -13,19 +13,16 @@
 <br/>
 
 <div class="col-md-10">
-<h2>Todo Lists</h2>
+
+<h2>My List</h2>
+
 <% @items.each do |item| %>
   <%= item.name %>
-  <%= link_to "complete", item, method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure you want to delete this to-do?'} %>
+  <%= link_to "complete", item, method: :delete, class: 'glyphicon glyphicon-ok', data: { confirm: 'Are you sure you want to delete this to-do?'} %>
   </br>
   <br>
 <% end %>
-<h4 class='js-comments-count'><%# @items.count %> Total</h4> 
-  <div class='js-items'>
-    <%# render partial: 'items/item', collection: @items %>
-   </div>
-
 
   <div class='new-item'>
-   <%# render partial: 'items/form', locals: { user:@user, item: @item} %>
+    <%= render partial: 'items/form', locals: { item: @item } %>
   </div>

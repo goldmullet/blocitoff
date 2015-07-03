@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
   def index
     @user = current_user
     @items = current_user.items
+    @item = current_user.items.build
+  end
+
+  def crap
+    @name = 'Chip Neff'
   end
 
   def show
@@ -25,11 +30,12 @@ class ItemsController < ApplicationController
      else
        flash[:error] = "There was an error saving the item. Please try again."
      end
+     redirect_to root_path
 
-     respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+    #  format.html
+    #  format.js
+    # end
   end
 
   def destroy
