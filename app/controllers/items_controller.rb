@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   def index
     @user = current_user
     @items = current_user.items
-    @item = current_user.items.build
   end
 
   def days_left
@@ -19,9 +18,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-     @user=current_user
      @item = current_user.items.build(item_params)
-     @new_item=Item.new
 
     if @item.save
        flash[:notice] = "Item was saved."
