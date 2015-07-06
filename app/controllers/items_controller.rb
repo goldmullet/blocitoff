@@ -6,10 +6,12 @@ class ItemsController < ApplicationController
     @item = current_user.items.build
   end
 
+  def days_left
+      7 - (DateTime.now.to_date - created_at.to_date).to_i
+  end
+
   def show
-    @user = current_user
-    @lists = @user.lists
-    @item=Item.new
+
   end
 
   def new
